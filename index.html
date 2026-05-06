@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pinterest Test</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <a href="#" class="logo" onclick="event.preventDefault()">
+        <span class="logo-icon">P</span>Pinterest
+      </a>
+      <input type="text" class="search" id="searchInput" placeholder="Search pins..." />
+      <div class="header-spacer"></div>
+      <button class="btn btn-primary" id="createBtn">+ Create Pin</button>
+    </header>
+    <div class="tag-bar" id="tagBar"></div>
+    <main>
+      <div class="grid" id="pinGrid"></div>
+      <div class="empty" id="emptyState" style="display:none">
+        <h2>No pins yet</h2>
+        <p>Click "Create Pin" to add your first one.</p>
+      </div>
+    </main>
+
+    <div class="modal-backdrop" id="formModal">
+      <div class="modal">
+        <h2 id="formTitle">Create Pin</h2>
+        <form id="pinForm">
+          <div class="field">
+            <label>Image</label>
+            <div class="upload-zone" id="uploadZone">
+              <p>📁 <strong>Click to upload</strong> or drag & drop</p>
+              <p style="margin-top:4px;">PNG, JPG, GIF up to 5MB</p>
+              <input type="file" id="fileInput" accept="image/*" hidden />
+            </div>
+            <div class="or-divider">OR</div>
+            <input type="url" id="imageInput" placeholder="Paste image URL..." />
+            <img class="preview" id="imagePreview" alt="preview" />
+          </div>
+          <div class="field">
+            <label for="titleInput">Title</label>
+            <input type="text" id="titleInput" required maxlength="100" placeholder="Add a title" />
+          </div>
+          <div class="field">
+            <label for="descInput">Description</label>
+            <textarea id="descInput" maxlength="500" placeholder="Tell everyone what your Pin is about"></textarea>
+          </div>
+          <div class="field">
+            <label>Tags</label>
+            <div class="tags-input-wrap" id="tagsWrap">
+              <input type="text" id="tagsInput" placeholder="Type a tag and press Enter..." />
+            </div>
+            <p class="field-hint">Press Enter or comma to add a tag</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="detailModal">
+      <div class="detail">
+        <button class="close-x" id="detailClose">✕</button>
+        <img id="detailImg" alt="" />
+        <div class="detail-body">
+          <h2 id="detailTitle"></h2>
+          <div class="detail-meta" id="detailMeta"></div>
+          <div class="detail-tags" id="detailTags"></div>
+          <p id="detailDesc"></p>
+          <div style="display:flex; gap:10px;">
+            <button class="btn btn-secondary" id="detailEdit">Edit</button>
+            <button class="btn btn-primary" id="detailDelete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
